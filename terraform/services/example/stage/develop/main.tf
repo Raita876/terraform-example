@@ -13,6 +13,7 @@ module "network" {
 
 module "application" {
   source                = "../../modules/application"
+  vpc_id                = module.network.vpc_id
   public_subnet_1a_id   = module.network.public_subnet_1a_id
   public_subnet_1c_id   = module.network.public_subnet_1c_id
   private_subnet_id     = module.network.private_subnet_id
