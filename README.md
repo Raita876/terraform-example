@@ -1,6 +1,6 @@
 # Terraform
 
-# How to use
+## How to use
 
 ```shell
 $ cat .env
