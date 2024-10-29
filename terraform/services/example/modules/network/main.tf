@@ -92,3 +92,11 @@ resource "aws_security_group" "alb_security_group" {
     Name = "${var.name}_alb_security_group"
   }
 }
+
+resource "aws_security_group" "ecs_security_group" {
+  vpc_id = aws_vpc.vpc.id
+
+  tags = {
+    Name = "${var.name}_ecs_security_group"
+  }
+}

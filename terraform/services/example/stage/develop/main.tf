@@ -18,5 +18,6 @@ module "application" {
   public_subnet_1c_id   = module.network.public_subnet_1c_id
   private_subnet_id     = module.network.private_subnet_id
   alb_security_group_id = module.network.alb_security_group_id
+  ecs_security_group_id = module.network.ecs_security_group_id
   name                  = "develop"
 }
