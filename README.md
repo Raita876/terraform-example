@@ -1,5 +1,7 @@
 # Terraform Example
 
+ECS 環境構築のための terraform サンプルコード
+
 ## How to use
 
 ```shell
