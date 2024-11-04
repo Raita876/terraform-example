@@ -1,4 +1,4 @@
-# Terraform
+# Terraform Example
 
 ## How to use
 
