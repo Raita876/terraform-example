@@ -53,6 +53,8 @@ function apply() {
     terraform init
     terraform apply -auto-approve
 
+    poling
+
     info "success terraform apply"
 }
 
@@ -63,6 +65,29 @@ function destroy() {
     terraform destroy -auto-approve
 
     info "success terraform destroy"
+}
+
+function poling() {
+    local url
+    url=$(terraform output -json | jq -r ".load_balancer_dns_name.value")
+
+    info "url=${url}"
+
+    local count="240"
+    for i in $(seq 1 ${count}); do
+        local http_status_code
+        set +e
+        http_status_code=$(curl "${url}" -o /dev/null -w '%{http_code}\n' -s)
+        set -e
+
+        if [[ "${http_status_code}" == "200" ]]; then
+            info "Success request ${url}"
+            break
+        else
+            info "Poling ${http_status_code} ${i}/${count}"
+        fi
+        sleep 5
+    done
 }
 
 function main() {
